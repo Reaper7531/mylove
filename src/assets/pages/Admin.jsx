@@ -2,7 +2,8 @@ import { addDoc, collection, doc, getDocs,deleteDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db } from "../../libs/firebase";
 import AdminFormComponent from "../Components/AdminFormComponent";
-import { SignedIn, SignedOut, SignIn, UserButton, } from "@clerk/clerk-react";
+import { SignedIn, SignedOut,  UserButton, } from "@clerk/clerk-react";
+import { NavLink } from "react-router";
 const dataDBCollectionRef = collection(db, "sdb");
 function Admin() {
   //States
@@ -73,6 +74,7 @@ function Admin() {
 
         <div className="w-full h-full  flex items-center justify-center">
           <div className="flex flex-col w-full  md:w-1/2 h-full gap-5">
+          <h1 className="text-xl text-pink-800 font-mono">User : <UserButton/></h1>
           <h1 className="text-center text-2xl font-semibold">List of Notes</h1>
           {
             data.map((item)=>(
@@ -89,19 +91,15 @@ function Admin() {
           }
           </div>
         </div>
-        <UserButton/>
+        
       </div>
 
       </SignedIn>
       <SignedOut>
-        <div className="w-full flex-col h-screen items-center gap-10 flex mt-10">
-          <h1 className="text-2xl   font-semibold font-mono text-center">Either its me or some mf who thinks he slick</h1>
-
-          <SignIn />
-
+        <div className="w-full h-screen flex justify-center items-center">
+          go back? <NavLink className="bg-green-600 p-1" to="/">Home</NavLink>
         </div>
-
-      </SignedOut>
+ </SignedOut>
     </>
   );
 }

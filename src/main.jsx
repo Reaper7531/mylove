@@ -7,6 +7,7 @@ import RouterConfig from './RouterConfig.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    
      <BrowserRouter>
      <Navbar/>
      <RouterConfig/>

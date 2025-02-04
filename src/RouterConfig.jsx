@@ -4,29 +4,43 @@ import BdayBoard from "./assets/pages/BdayBoard.jsx";
 import LoveReason from "./assets/pages/LoveReasons.jsx";
 import ArtGallery from "./assets/pages/ArtGallery.jsx";
 import Admin from "./assets/pages/Admin.jsx";
-import { Route, Routes } from "react-router";
+import SignInPage from "./assets/pages/SignInPage.jsx";
+import {  Route, Routes } from "react-router";
 import App from "./App.jsx";
-import { ClerkProvider } from "@clerk/clerk-react";
+import { ClerkProvider,RedirectToSignIn,SignedIn,SignedOut} from "@clerk/clerk-react";
 //clerk key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 function RouterConfig() {
   return (
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
     <Routes>
+      {/* Public Routes */}
       <Route path="/" element={<App />} />
       <Route path="/map" element={<SiteTour />} />
       <Route path="/miki" element={<MikiGallery />} />
       <Route path="/ily" element={<LoveReason />} />
       <Route path="/notes" element={<BdayBoard />} />
       <Route path="/art" element={<ArtGallery />} />
-      <Route
-        path="/admin"
+      
+      {/* Authentication Routes */}
+      <Route path="/signin" element={<SignInPage />} />
+      
+      {/* Protected Admin Route */}
+      <Route 
+        path="/admin" 
         element={
-          <ClerkProvider  publishableKey={PUBLISHABLE_KEY} >
-            <Admin />
-          </ClerkProvider>
-        }
+          <>
+            <SignedIn>
+              <Admin />
+            </SignedIn>
+            <SignedOut>
+       <RedirectToSignIn afterSignInUrl="/" redirectUrl="/admin"/>
+            </SignedOut>
+          </>
+        } 
       />
     </Routes>
+  </ClerkProvider>
   );
 }
 
