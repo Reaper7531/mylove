@@ -1,3 +1,4 @@
+
 import { NavLink } from "react-router"
 
 const Navbar = () => {
@@ -13,6 +14,7 @@ const Navbar = () => {
       <NavLink to="/map">
       <img className="w-10 h-10 mr-10" src="/Images/NavCompass.png" alt="" />
         </NavLink>  
+        
     </div>
   )
 }

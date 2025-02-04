@@ -1,11 +1,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+VN&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
 @import "tailwindcss";
 
 
 .custom-font{
   font-family: "Playwrite VN", serif;
   font-optical-sizing: auto;
+  font-style: normal;
+}
+.card-font{
+  font-family: "Knewave", serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -32,3 +37,15 @@
   animation: float 3s ease-in-out 0.5s infinite;
 }
 
+.card::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+
+.card::-webkit-scrollbar-track {
+  background: inherit; /* Background color of the track */
+}
+
+
+.card::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Darken the thumb on hover */
+}

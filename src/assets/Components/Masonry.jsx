@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from "prop-types"
 
 export default function Masonry({data}) {
   return (
@@ -17,4 +17,8 @@ export default function Masonry({data}) {
       ))}
     </div>
   );
+}
+
+Masonry.propTypes={
+  data:PropTypes.array
 }
