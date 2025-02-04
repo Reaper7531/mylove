@@ -5,9 +5,9 @@ import LoveReason from "./assets/pages/LoveReasons.jsx";
 import ArtGallery from "./assets/pages/ArtGallery.jsx";
 import Admin from "./assets/pages/Admin.jsx";
 import SignInPage from "./assets/pages/SignInPage.jsx";
-import {  Route, Routes } from "react-router";
+import { NavLink, Route, Routes } from "react-router";
 import App from "./App.jsx";
-import { ClerkProvider,RedirectToSignIn,SignedIn,SignedOut} from "@clerk/clerk-react";
+import { ClerkProvider,SignedIn,SignedOut} from "@clerk/clerk-react";
 //clerk key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 function RouterConfig() {
@@ -34,7 +34,13 @@ function RouterConfig() {
               <Admin />
             </SignedIn>
             <SignedOut>
-       <RedirectToSignIn afterSignInUrl="/" redirectUrl="/admin"/>
+            <div className="w-full flex justify-center items-center h-screen flex-col">
+          <h1 className="text-red-600 text-2xl font-mono">Go back! This isnt where you are supposed to be</h1>
+          <div className="flex flex-col gap-5">
+          <NavLink className="rounded-lg p-3  h-12 bg-blue-400 text-center mt-10 text-white" to="/signin">Admin Sign In</NavLink>
+          <NavLink className="rounded-lg p-3  h-12 bg-green-400 mt-10 text-center text-white" to="/">Click here to go back</NavLink>
+          </div>
+        </div>
             </SignedOut>
           </>
         } 
