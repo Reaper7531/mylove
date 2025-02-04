@@ -2,7 +2,7 @@ import { addDoc, collection, doc, getDocs,deleteDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db } from "../../libs/firebase";
 import AdminFormComponent from "../Components/AdminFormComponent";
-import { SignedIn, SignedOut, SignIn, } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignIn, UserButton, } from "@clerk/clerk-react";
 const dataDBCollectionRef = collection(db, "sdb");
 function Admin() {
   //States
@@ -89,6 +89,7 @@ function Admin() {
           }
           </div>
         </div>
+        <UserButton/>
       </div>
 
       </SignedIn>

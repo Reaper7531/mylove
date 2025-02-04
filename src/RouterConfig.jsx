@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router";
 import App from "./App.jsx";
 import { ClerkProvider } from "@clerk/clerk-react";
 //clerk key
-
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 function RouterConfig() {
   return (
     <Routes>
@@ -21,7 +21,7 @@ function RouterConfig() {
       <Route
         path="/admin"
         element={
-          <ClerkProvider publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY} afterSignOutUrl="/">
+          <ClerkProvider  publishableKey={PUBLISHABLE_KEY} >
             <Admin />
           </ClerkProvider>
         }

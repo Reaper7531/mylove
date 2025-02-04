@@ -4,7 +4,7 @@ import { NavLink } from "react-router"
 const Navbar = () => {
   return (
     <div className="w-full sticky h-14 bg-black text-left flex items-center justify-between ">
-      <NavLink to="/">
+      <NavLink to="/admin">
         <div className="text-white inline-flex  text-2xl ml-5 font-mono font-semibold text-pretty">
            SJ
             <img className="w-6" src="/heart.svg" alt="" />
